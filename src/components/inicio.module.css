@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(0%, 100%);
+} */
+
+.title {
+    font-family: 'Dancing Script', cursive;
+}
+
+.box ul {
+    font-family: 'Zen Loop', cursive;
+    font-size: 25px;
+    list-style: none;
+}
+
+.box {
+    background-color: darkkhaki;
+    font-size: 30px;
+    padding: 30px;
+    margin-right: 180px;
+}
