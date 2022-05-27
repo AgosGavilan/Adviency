@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Tamil&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+}
+
+.box ul {
+    font-family: 'Tiro Tamil', serif;
+    font-size: 18px;
+    list-style: none;
+    text-align: center;
+}
+
+.box {
+    background-color: antiquewhite;
+    font-size: 30px;
+    padding: 40px;
+    margin-bottom: 70px;
+}

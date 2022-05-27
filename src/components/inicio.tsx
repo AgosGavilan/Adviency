@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import s from './inicio.module.css'
+import s from '../style/inicio.module.css'
+import { AddGift } from "./addGift";
 
-export const Inicio = () => {
-    const [regalos, setRegalos] = useState(["medias", "zapatillas", "carteras"])
-    
+
+export const Inicio = () : JSX.Element => {
+    const [lista, setLista] = useState(["medias", "zapatillas", "carteras"])
+
+
     return(
         <div className={s.main}>
             <div className={s.box}>
                 <div className={s.title}>
                     <h1>REGALOS:</h1>
                 </div>
+                <AddGift setLista={setLista} lista={lista}/>
                 <ul>
-                    {regalos?.map(r => (
+                    {lista?.map(r => (
                         <li key={r}>
                             {r}
                         </li>

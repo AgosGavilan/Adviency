@@ -1,0 +1,28 @@
+.input {
+    height: 30px;
+    font-size: 17px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: antiquewhite;
+    padding: 5px;
+    outline: none; /*elimina el recuadro de todo el input cuando hago click en el input */
+}
+ 
+::placeholder {
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.btn {
+    background-color: seagreen;
+    color: white;
+    margin-left: 10px;
+    height: 30px;
+    width: 40px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.form {
+    margin-bottom: 20px;
+}
