@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import s from '../style/add.module.css'
 
-export const AddGift = ({setLista, lista}: any) => {
+type Props = { //mediante la palabra clave type permite crear nuevos tipos y luego reutilizarlos
+    setLista: ([]) => void;
+    lista: string[];
+}
+
+//export const AddGift: React.FC<Props> = ({setLista, lista}) => {} //Las FC pueden ser escritos como funciones normales que toman props como argumentos y retornan un elemento JSX
+export const AddGift = ({setLista, lista}: Props) => { 
     const [regalo, setRegalo] = useState("")
 
     function handleChange(e: any) :void {
@@ -21,7 +27,7 @@ export const AddGift = ({setLista, lista}: any) => {
                 className={s.input}
                 type='text'
                 value={regalo}
-                placeholder='Regalo'
+                placeholder='Añadir regalo'
                 onChange={handleChange}
                 />
                 <button

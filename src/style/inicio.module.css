@@ -16,12 +16,52 @@
     font-family: 'Tiro Tamil', serif;
     font-size: 18px;
     list-style: none;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .box {
     background-color: antiquewhite;
     font-size: 30px;
-    padding: 40px;
+    padding: 40px 40px 20px;
     margin-bottom: 70px;
+    border-radius: 10px;
+}
+
+.li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.trash {
+    border: none;
+    background-color: antiquewhite;
+    color: #D00000;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 2px;
+}
+
+.emptyList {
+    font-family: 'Tiro Tamil', serif;
+    font-size: 14px;
+    text-align: center;
+    color: gray;
+}
+
+.trashAll_container{
+    text-align: center;
+}
+
+.trashAll {
+    height: 33px;
+    width: 100%;
+    background-color: #D00000;
+    color: wheat;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Tiro Tamil', serif;
+    font-size: 17px;
+    cursor: pointer;
 }
