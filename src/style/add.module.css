@@ -27,3 +27,9 @@
 .form {
     margin-bottom: 20px;
 }
+
+.cantidad {
+    width: 40px;
+    height: 27px;
+    margin-left: 5px;
+}
