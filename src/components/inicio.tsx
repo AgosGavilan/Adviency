@@ -1,35 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from '../style/inicio.module.css'
 import { AddGift } from "./addGift";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
+interface List {
+    nombre: string;
+    cantidad: number
+}
 
 export const Inicio = () : JSX.Element => {
-    //const [lista, setLista] = useState(["medias", "zapatillas", "carteras"])
-    const [lista, setLista] = useState([
-        {
-            nombre: "medias",
-        cantidad: 1
-        },
-        {
-            nombre: "zapatillas",
-        cantidad: 1
-        },
-        {
-            nombre: "carteras",
-        cantidad: 1
+    //const [lista, setLista] = useState<List[]>([])
+    const [lista, setLista] = useState<List[]>(() => { //lista va a recibir un cb que puede retornar o un objeto o un array vacio
+        // para obtener el valor del almacenamiento
+        const saved = localStorage.getItem("lista"); //obengo la key 'lista' del objeto localStorage
+        if(saved) { //si tengo ese key guardada
+            const initialValue = JSON.parse(saved); //parsealo a objeto ya que esta guardado en mi LS como un string
+            return initialValue || []; //y retorname el objeto y si mi key 'lista' esta vacía, retorname entonces un array vacío
         }
-    ])
+      });
+
+    useEffect(() => { //cuando montes el componente
+        localStorage.setItem('lista', JSON.stringify(lista)) //con setItem almacenamos en el objeto localStorage un par clave/valor. En este caso, agregamos al LS = {'lista': (aca puede ir o mi array vacio '[]' si es que no tengo nada o mi array con mis regalos '[{}, {} ...]')}
+    }, [lista])
 
     function handleDelete(r: any) :void { //por parametro me llego el regalo que tengo que eliminar
         setLista(lista.filter(g => g.nombre !== r)) //y le digo que filtre por aquellos regalos que no se llamen igual que mi regalo a eliminar
+        window.localStorage.setItem('lista', JSON.stringify(lista.filter(g => g.nombre !== r)))
     }
 
-    function deleteAll (r: any){
-        return lista.length > 0 
-        ? setLista(lista.filter(g => g.nombre === r))
-        : ''
+    function deleteAll () :void{
+       setLista([])
     }
 
 
@@ -43,7 +44,7 @@ export const Inicio = () : JSX.Element => {
                 {lista.length ? lista.map(r => (
                         <ul key={r.nombre}>
                             <li key={r.nombre} className={s.li}>
-                                {`${r.nombre} x${r.cantidad == null ? 1 : r.cantidad}` }
+                                <span>{`${r.nombre} x${r.cantidad}`}</span>
                                 <span>
                                     <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
                                     onClick={()=> handleDelete(r.nombre)} //asi que por parametro le paso a la funcion el elemento (r)
@@ -55,7 +56,7 @@ export const Inicio = () : JSX.Element => {
                             </li>
                         </ul>
                 )): <div className={s.emptyList}>La lista esta vacía 😔 ¡Agrega algo!</div>}
-                {lista.length 
+                {lista.length
                 ? <div className={s.trashAll_container}>
                     <button onClick={deleteAll} className={s.trashAll}>Borrar todo</button>
                 </div> 
