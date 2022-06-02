@@ -3,10 +3,12 @@ import s from '../style/inicio.module.css'
 import { AddGift } from "./addGift";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import img from '../assets/pngtree-gift-icon-design-illustration-png-image_2177440.jpg'
 
 interface List {
     nombre: string;
-    cantidad: number
+    cantidad: number;
+    imagen: string
 }
 
 export const Inicio = () : JSX.Element => {
@@ -16,7 +18,7 @@ export const Inicio = () : JSX.Element => {
         const saved = localStorage.getItem("lista"); //obengo la key 'lista' del objeto localStorage
         if(saved) { //si tengo ese key guardada
             const initialValue = JSON.parse(saved); //parsealo a objeto ya que esta guardado en mi LS como un string
-            return initialValue || []; //y retorname el objeto y si mi key 'lista' esta vacía, retorname entonces un array vacío
+            return initialValue || []; //y retorname el objeto si mi key 'lista' tiene algo, sino retorname entonces un array vacío
         }
       });
 
@@ -44,8 +46,11 @@ export const Inicio = () : JSX.Element => {
                 {lista.length ? lista.map(r => (
                         <ul key={r.nombre}>
                             <li key={r.nombre} className={s.li}>
-                                <span>{`${r.nombre} x${r.cantidad}`}</span>
-                                <span>
+                                <span className={s.img_name_q}>
+                                    <img src={r.imagen ? r.imagen : img} alt='gift' width="40px" height="40px"/>
+                                    <p className={s.nombre_regalo}>{`${r.nombre}   x${r.cantidad}`}</p>
+                                </span>
+                                <span className={s.span_trash}>
                                     <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
                                     onClick={()=> handleDelete(r.nombre)} //asi que por parametro le paso a la funcion el elemento (r)
                                     className={s.trash}

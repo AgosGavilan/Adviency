@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import s from '../style/add.module.css'
 
 
 //SIEMPRE QUE PASE UN ARRAY DE OBJETOS POR PARAMETRO, PRIMERO TENGO QUE CREAR UNA INTERFACE PARA EL OBJETO
 interface List {
     nombre: string;
-    cantidad: number
+    cantidad: number;
+    imagen: string
 }
 
 type Props = { //mediante la palabra clave type permite crear nuevos tipos y luego reutilizarlos
@@ -17,7 +18,8 @@ type Props = { //mediante la palabra clave type permite crear nuevos tipos y lue
 export const AddGift = ({setLista, lista}: Props) => { 
     const [regalo, setRegalo] = useState({
         nombre: '',
-        cantidad: 1
+        cantidad: 1,
+        imagen: ''
     })
 
 
@@ -38,7 +40,8 @@ export const AddGift = ({setLista, lista}: Props) => {
         else {setLista([...lista, regalo])}
         setRegalo({
             nombre: '',
-            cantidad: 1
+            cantidad: 1,
+            imagen: ''
         })
     }
     return (
@@ -51,6 +54,14 @@ export const AddGift = ({setLista, lista}: Props) => {
                 name="nombre"
                 value={regalo.nombre}
                 placeholder='Añadir regalo'
+                onChange={handleChange}
+                />
+                <input 
+                className={s.input_img}
+                type='text'
+                value={regalo.imagen}
+                name='imagen'
+                placeholder="http://image..."
                 onChange={handleChange}
                 />
                 <input

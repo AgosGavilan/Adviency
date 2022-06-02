@@ -14,7 +14,7 @@
 
 .box ul {
     font-family: 'Tiro Tamil', serif;
-    font-size: 18px;
+    font-size: 17px;
     list-style: none;
     /* text-align: center; */
 }
@@ -38,7 +38,7 @@
     border: none;
     background-color: antiquewhite;
     color: #D00000;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
     margin-right: 2px;
 }
@@ -64,4 +64,20 @@
     font-family: 'Tiro Tamil', serif;
     font-size: 17px;
     cursor: pointer;
+}
+
+.nombre_regalo {
+    display: flex;
+    align-items: end;
+    margin-left: 8px;
+}
+
+.span_trash {
+    display: flex;
+    align-items: center;
+}
+
+.img_name_q {
+    display: flex;
+    flex-direction: row;
 }
