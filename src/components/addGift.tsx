@@ -12,10 +12,11 @@ interface List {
 type Props = { //mediante la palabra clave type permite crear nuevos tipos y luego reutilizarlos
     setLista: ([]) => void;
     lista: List[]; //Y DE ESTA MANERA SE TYPEA UN ARRAY DE OBJETOS
+    handleClose: () => void
 }
 
 //export const AddGift: React.FC<Props> = ({setLista, lista}) => {} //Las FC pueden ser escritos como funciones normales que toman props como argumentos y retornan un elemento JSX
-export const AddGift = ({setLista, lista}: Props) => { 
+export const AddGift = ({setLista, lista, handleClose}: Props) => { 
     const [regalo, setRegalo] = useState({
         nombre: '',
         cantidad: 1,
@@ -43,10 +44,13 @@ export const AddGift = ({setLista, lista}: Props) => {
             cantidad: 1,
             imagen: ''
         })
+        handleClose()
     }
+
+
     return (
         <div>
-            <form onSubmit={handleSubmit} className={s.form}>
+            <form className={s.form}>
                 <input
                 className={s.input}
                 required
@@ -72,11 +76,21 @@ export const AddGift = ({setLista, lista}: Props) => {
                 name='cantidad'
                 onChange={handleChange}
                 />
-                <button
-                className={s.btn}
-                type="submit">
-                    +
-                </button>
+                <div className={s.btn_form}>
+                    <button
+                    type='button'
+                    className={s.btn_close}
+                    onClick={handleClose}
+                    >
+                        Cerrar
+                    </button>
+                    <button
+                    className={s.btn}
+                    type="submit"
+                    onClick={handleSubmit}>
+                        Agregar
+                    </button>
+                </div>
             </form>
         </div>
     )

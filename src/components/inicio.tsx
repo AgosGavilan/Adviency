@@ -4,6 +4,7 @@ import { AddGift } from "./addGift";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import img from '../assets/pngtree-gift-icon-design-illustration-png-image_2177440.jpg'
+import InputModal from "./inputModal"
 
 interface List {
     nombre: string;
@@ -42,7 +43,9 @@ export const Inicio = () : JSX.Element => {
                 <div className={s.title}>
                     <h1>REGALOS:</h1>
                 </div>
-                <AddGift setLista={setLista} lista={lista}/>
+                {/* <AddGift setLista={setLista} lista={lista}/> */}
+                < InputModal setLista={setLista} lista={lista} />
+
                 {lista.length ? lista.map(r => (
                         <ul key={r.nombre}>
                             <li key={r.nombre} className={s.li}>

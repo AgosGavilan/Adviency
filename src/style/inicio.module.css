@@ -25,6 +25,7 @@
     padding: 40px 40px 20px;
     margin-bottom: 70px;
     border-radius: 10px;
+    width: 400px;
 }
 
 .li {
@@ -68,7 +69,6 @@
 
 .nombre_regalo {
     display: flex;
-    align-items: end;
     margin-left: 8px;
 }
 
