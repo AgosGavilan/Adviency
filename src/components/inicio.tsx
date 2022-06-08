@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import s from '../style/inicio.module.css'
-import { AddGift } from "./addGift";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import img from '../assets/pngtree-gift-icon-design-illustration-png-image_2177440.jpg'
+import img from '../assets/png-transparent-christmas-gift-christmas-gift-gift-miscellaneous-ribbon-desktop-wallpaper-removebg-preview.png'
 import InputModal from "./inputModal"
 
 interface List {

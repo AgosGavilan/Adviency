@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { AddGift } from './addGift';
 import s from '../style/modal.module.css'
+import gift from '../assets/1añada-el-icono-del-esquema-de-la-caja-regalo-134826450-removebg-preview.png'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -11,10 +12,11 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: 'antiquewhite',
+  border: 'none',
   boxShadow: 24,
   p: 4,
+  borderRadius: 2.5
 };
 
 interface List {
@@ -36,7 +38,9 @@ export default function InputModal({setLista, lista}: Props) {
   return (
     <div >
       <div className={s.btn_modal}>
-        <Button onClick={handleOpen}>Añadir regalo</Button>
+        <Button onClick={handleOpen}>
+          <img src={gift} alt='gift' height='50px' width='50px'/>
+        </Button>
       </div>
       <Modal
         open={open}
