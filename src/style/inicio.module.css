@@ -46,9 +46,10 @@
 
 .emptyList {
     font-family: 'Tiro Tamil', serif;
-    font-size: 14px;
+    font-size: 17px;
     text-align: center;
     color: gray;
+    margin-top: 10px;
 }
 
 .trashAll_container{
@@ -69,6 +70,7 @@
 .nombre_regalo {
     display: flex;
     margin-left: 8px;
+    font-size: 19px;
 }
 
 .span_trash {
@@ -79,4 +81,10 @@
 .img_name_q {
     display: flex;
     flex-direction: row;
+}
+
+.destinatario {
+    margin-left: 8px;
+    font-size: 16px;
+    color: grey;
 }

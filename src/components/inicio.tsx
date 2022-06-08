@@ -8,7 +8,8 @@ import InputModal from "./inputModal"
 interface List {
     nombre: string;
     cantidad: number;
-    imagen: string
+    imagen: string;
+    destinatario: string;
 }
 
 export const Inicio = () : JSX.Element => {
@@ -42,7 +43,7 @@ export const Inicio = () : JSX.Element => {
                 <div className={s.title}>
                     <h1>REGALOS:</h1>
                 </div>
-                {/* <AddGift setLista={setLista} lista={lista}/> */}
+
                 < InputModal setLista={setLista} lista={lista} />
 
                 {lista.length ? lista.map(r => (
@@ -50,7 +51,10 @@ export const Inicio = () : JSX.Element => {
                             <li key={r.nombre} className={s.li}>
                                 <span className={s.img_name_q}>
                                     <img src={r.imagen ? r.imagen : img} alt='gift' width="40px" height="40px"/>
-                                    <p className={s.nombre_regalo}>{`${r.nombre}   x${r.cantidad}`}</p>
+                                    <span>
+                                        <p className={s.nombre_regalo}>{`${r.nombre}   x${r.cantidad}`}</p>
+                                        <p className={s.destinatario}>{r.destinatario}</p>
+                                    </span>
                                 </span>
                                 <span className={s.span_trash}>
                                     <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar

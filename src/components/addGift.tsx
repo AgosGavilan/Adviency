@@ -6,7 +6,8 @@ import s from '../style/add.module.css'
 interface List {
     nombre: string;
     cantidad: number;
-    imagen: string
+    imagen: string;
+    destinatario: string;
 }
 
 type Props = { //mediante la palabra clave type permite crear nuevos tipos y luego reutilizarlos
@@ -20,7 +21,8 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
     const [regalo, setRegalo] = useState({
         nombre: '',
         cantidad: 1,
-        imagen: ''
+        imagen: '',
+        destinatario: ''
     })
 
 
@@ -42,7 +44,8 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
         setRegalo({
             nombre: '',
             cantidad: 1,
-            imagen: ''
+            imagen: '',
+            destinatario: ''
         })
         handleClose()
     }
@@ -58,6 +61,15 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
                 name="nombre"
                 value={regalo.nombre}
                 placeholder='Añadir regalo'
+                onChange={handleChange}
+                />
+                <input
+                className={s.input}
+                required
+                type='text'
+                name="destinatario"
+                value={regalo.destinatario}
+                placeholder='Este regalo es para...'
                 onChange={handleChange}
                 />
                 <input 

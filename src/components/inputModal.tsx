@@ -22,7 +22,8 @@ const style = {
 interface List {
     nombre: string;
     cantidad: number;
-    imagen: string
+    imagen: string;
+    destinatario: string;
 }
 
 type Props = { //mediante la palabra clave type permite crear nuevos tipos y luego reutilizarlos
