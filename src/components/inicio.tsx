@@ -4,13 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import img from '../assets/png-transparent-christmas-gift-christmas-gift-gift-miscellaneous-ribbon-desktop-wallpaper-removebg-preview.png'
 import InputModal from "./inputModal"
-
-interface List {
-    nombre: string;
-    cantidad: number;
-    imagen: string;
-    destinatario: string;
-}
+import EditModal from "./editModal";
+import { List } from "../interfaces/List"
 
 export const Inicio = () : JSX.Element => {
     //const [lista, setLista] = useState<List[]>([])
@@ -32,10 +27,9 @@ export const Inicio = () : JSX.Element => {
         window.localStorage.setItem('lista', JSON.stringify(lista.filter(g => g.nombre !== r)))
     }
 
-    function deleteAll () :void{
+    function deleteAll () :void {
        setLista([])
     }
-
 
     return(
         <div className={s.main}>
@@ -47,8 +41,10 @@ export const Inicio = () : JSX.Element => {
                 < InputModal setLista={setLista} lista={lista} />
 
                 {lista.length ? lista.map(r => (
-                        <ul key={r.nombre}>
-                            <li key={r.nombre} className={s.li}>
+                        <ul key={r.id}>
+                            <li key={r.id} className={s.li}>
+
+                                {/* nombre, imagen y destinatario del regalo */}
                                 <span className={s.img_name_q}>
                                     <img src={r.imagen ? r.imagen : img} alt='gift' width="40px" height="40px"/>
                                     <span>
@@ -56,7 +52,17 @@ export const Inicio = () : JSX.Element => {
                                         <p className={s.destinatario}>{r.destinatario}</p>
                                     </span>
                                 </span>
-                                <span className={s.span_trash}>
+
+                                {/* botones de editar y eliminar regalo */}
+                                <span className={s.span_buttons}>
+                                    {/* <button
+                                    className={s.edit}
+                                    onClick={() => handleEdit(r.nombre)}
+                                    >
+                                        <FontAwesomeIcon icon={faPenToSquare} />
+                                    </button> */}
+                                    <EditModal setLista={setLista} lista={lista} edit={r}/>
+
                                     <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
                                     onClick={()=> handleDelete(r.nombre)} //asi que por parametro le paso a la funcion el elemento (r)
                                     className={s.trash}

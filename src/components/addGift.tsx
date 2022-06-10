@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import s from '../style/add.module.css'
-
-
-//SIEMPRE QUE PASE UN ARRAY DE OBJETOS POR PARAMETRO, PRIMERO TENGO QUE CREAR UNA INTERFACE PARA EL OBJETO
-interface List {
-    nombre: string;
-    cantidad: number;
-    imagen: string;
-    destinatario: string;
-}
+import { List } from "../interfaces/List"
 
 type Props = { //mediante la palabra clave type permite crear nuevos tipos y luego reutilizarlos
     setLista: ([]) => void;
@@ -19,6 +11,7 @@ type Props = { //mediante la palabra clave type permite crear nuevos tipos y lue
 //export const AddGift: React.FC<Props> = ({setLista, lista}) => {} //Las FC pueden ser escritos como funciones normales que toman props como argumentos y retornan un elemento JSX
 export const AddGift = ({setLista, lista, handleClose}: Props) => { 
     const [regalo, setRegalo] = useState({
+        id: Math.random(),
         nombre: '',
         cantidad: 1,
         imagen: '',
@@ -42,11 +35,13 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
         }
         else {setLista([...lista, regalo])}
         setRegalo({
+            id: regalo.id,
             nombre: '',
             cantidad: 1,
             imagen: '',
             destinatario: ''
         })
+        console.log("soy id: ", regalo)
         handleClose()
     }
 
