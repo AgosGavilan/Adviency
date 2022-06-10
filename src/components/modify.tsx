@@ -1,5 +1,6 @@
 import React from "react";
 import { List } from "../interfaces/List"
+import s from "../style/add.module.css"
 
 type Props = { 
     setLista: ([]) => void;
@@ -27,38 +28,32 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
 
     function handleEdit (e: any) {
         e.preventDefault()
-        let noRepeat = lista.filter(el => el.nombre === editar.nombre)
-        if(noRepeat.length !== 0) {
-            alert("Ya existe un regalo con ese nombre")
-            return   
-        }
-
-        let filtrados = lista.filter(el => el !== edit) //elimino el que estaba
-        filtrados.push(editar) //agrego el nuevo
-        //console.log("soy filtrados: ", filtrados)
+        // let noRepeat = lista.filter(el => el.nombre === editar.nombre)
+        // if(noRepeat.length !== 0) {
+        //     alert("Ya existe un regalo con ese nombre")
+        //     return   
+        // }
+        let filtrados = lista.filter(el => el !== edit) //elimino el regalo que quiero editar
+        filtrados.push(editar) //agrego el nuevo regalo, modificado
         lista = filtrados
         setLista([...lista])
-        //setLista([filtrados])
-        console.log("soy lista: ", lista)
         handleClose()
     }
 
 
     return (
         <div>
-            <form /*className={s.form}*/>
+            <form className={s.form}>
                 <input
-                // className={s.input}
+                className={s.input}
                 required
                 type='text'
                 name="nombre"
-                //defaultValue={edit.nombre}
                 value={editar.nombre}
-                //placeholder='Añadir regalo'
                 onChange={handleChange}
                 />
                 <input
-                // className={s.input}
+                className={s.input}
                 required
                 type='text'
                 name="destinatario"
@@ -67,7 +62,7 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 onChange={handleChange}
                 />
                 <input 
-                // className={s.input_img}
+                className={s.input_img}
                 type='text'
                 value={editar.imagen}
                 name='imagen'
@@ -75,23 +70,23 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 onChange={handleChange}
                 />
                 <input
-                // className={s.cantidad}
+                className={s.cantidad}
                 type='number'
                 min={1}
                 value={editar.cantidad}
                 name='cantidad'
                 onChange={handleChange}
                 />
-                <div /*className={s.btn_form}*/>
+                <div className={s.btn_form}>
                     <button
                     type='button'
-                    //className={s.btn_close}
+                    className={s.btn_close}
                     onClick={handleClose}
                     >
                         Cerrar
                     </button>
                     <button
-                    //className={s.btn}
+                    className={s.btn_modify}
                     type="submit"
                     onClick={handleEdit}>
                         Guardar cambios

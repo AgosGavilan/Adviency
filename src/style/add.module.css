@@ -52,12 +52,23 @@
 }
 
 .btn_close {
-    background-color: grey;
+    background-color: dimgray;
     color: aliceblue;
-    height: 30px;
+    height: 35px;
     width: 100px;
     cursor: pointer;
     font-size: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.btn_modify {
+    background-color: green;
+    color: aliceblue;
+    height: 35px;
+    width: 100px;
+    cursor: pointer;
+    font-size: 12px;
     border-radius: 5px;
     margin-top: 20px;
 }
