@@ -35,7 +35,7 @@ export const Inicio = () : JSX.Element => {
         <div className={s.main}>
             <div className={s.box}>
                 <div className={s.title}>
-                    <h1>REGALOS:</h1>
+                    <h1>Regalos:</h1>
                 </div>
 
                 < InputModal setLista={setLista} lista={lista} />
@@ -55,14 +55,7 @@ export const Inicio = () : JSX.Element => {
 
                                 {/* botones de editar y eliminar regalo */}
                                 <span className={s.span_buttons}>
-                                    {/* <button
-                                    className={s.edit}
-                                    onClick={() => handleEdit(r.nombre)}
-                                    >
-                                        <FontAwesomeIcon icon={faPenToSquare} />
-                                    </button> */}
                                     <EditModal setLista={setLista} lista={lista} edit={r}/>
-
                                     <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
                                     onClick={()=> handleDelete(r.nombre)} //asi que por parametro le paso a la funcion el elemento (r)
                                     className={s.trash}

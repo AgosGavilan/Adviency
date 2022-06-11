@@ -44,6 +44,7 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
     return (
         <div>
             <form className={s.form}>
+                <label className={s.labels}>Regalo<span className={s.asterisco}>*</span>: </label>
                 <input
                 className={s.input}
                 required
@@ -51,7 +52,9 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 name="nombre"
                 value={editar.nombre}
                 onChange={handleChange}
+                autoFocus
                 />
+                <label className={s.labels}>Destinatario<span className={s.asterisco}>*</span>: </label>
                 <input
                 className={s.input}
                 required
@@ -60,15 +63,19 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 value={editar.destinatario}
                 //placeholder='Este regalo es para...'
                 onChange={handleChange}
+                autoFocus
                 />
+                <label className={s.labels}>Imagen<span className={s.asterisco}>*</span>: </label>
                 <input 
                 className={s.input_img}
-                type='text'
+                type='url'
                 value={editar.imagen}
                 name='imagen'
                 //placeholder="http://image..."
                 onChange={handleChange}
+                autoFocus
                 />
+                <label className={s.labels}>Cantidad<span className={s.asterisco}>*</span>: </label>
                 <input
                 className={s.cantidad}
                 type='number'
@@ -76,10 +83,12 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 value={editar.cantidad}
                 name='cantidad'
                 onChange={handleChange}
+                autoFocus
                 />
                 <div className={s.btn_form}>
                     <button
                     type='button'
+                    autoFocus
                     className={s.btn_close}
                     onClick={handleClose}
                     >
@@ -88,7 +97,8 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                     <button
                     className={s.btn_modify}
                     type="submit"
-                    onClick={handleEdit}>
+                    onClick={handleEdit}
+                    autoFocus>
                         Guardar cambios
                     </button>
                 </div>

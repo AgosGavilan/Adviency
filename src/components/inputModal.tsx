@@ -16,7 +16,7 @@ export default function InputModal({setLista, lista}: Props) {
     <div >
       <div className={s.btn_modal}>
         <Button onClick={handleOpen}>
-          <img src={gift} alt='gift' height='50px' width='50px'/>
+          <img src={gift} alt='gift' height='45px' width='45px'/>
         </Button>
       </div>
       <Modal

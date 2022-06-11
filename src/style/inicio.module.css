@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tiro+Tamil&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 
 * {
     margin: 0;
@@ -8,8 +9,10 @@
 }
 
 .title {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Sacramento', cursive;
     text-align: center;
+    margin-bottom: 10px;
+    font-size: 35px;
 }
 
 .box ul {
@@ -38,11 +41,12 @@
 .trash {
     border: none;
     background-color: antiquewhite;
-    color: #D00000;
-    font-size: 25px;
+    color: peru;
+    font-size: 19px;
     cursor: pointer;
-    margin-right: 2px;
 }
+
+
 
 .emptyList {
     font-family: 'Tiro Tamil', serif;
@@ -59,12 +63,13 @@
 .trashAll {
     height: 33px;
     width: 100%;
-    background-color: dimgrey;
+    background-color: darkgrey;
     color: aliceblue;
     border-radius: 5px;
     font-family: 'Tiro Tamil', serif;
     font-size: 17px;
     cursor: pointer;
+    border: none;
 }
 
 .nombre_regalo {

@@ -2,13 +2,35 @@
     height: 30px;
     font-size: 15px;
     padding: 5px;
-    outline: none; /*elimina el recuadro de todo el input cuando hago click en el input */
+    /* outline: none; elimina el recuadro de todo el input cuando hago click en el input */
     margin-bottom: 15px;
     border: none;
-    border-bottom: 1px solid;
-    background-color: antiquewhite;
+    /* border-bottom: 1px solid; */
+    background-color: aliceblue;
+    border-radius: 3px;
 }
- 
+
+.input_img {
+    height: 30px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    border: none;
+    /* border-bottom: 1px solid; */
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.cantidad {
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    /* border-bottom: 1px solid; */
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 3px;
+}
+
 ::placeholder {
     font-size: 15px;
     margin-left: 15px;
@@ -17,12 +39,13 @@
 .btn {
     background-color: green;
     color: aliceblue;
-    height: 30px;
+    height: 35px;
     width: 100px;
     cursor: pointer;
     font-size: 15px;
     border-radius: 5px;
     margin-top: 20px;
+    border: none;
 }
 
 .form {
@@ -30,20 +53,7 @@
     flex-direction: column;
 }
 
-.cantidad {
-    height: 27px;
-    border: none;
-    border-bottom: 1px solid;
-    background-color: antiquewhite;
-}
 
-.input_img {
-    height: 27px;
-    margin-bottom: 15px;
-    border: none;
-    border-bottom: 1px solid;
-    background-color: antiquewhite;
-}
 
 .btn_form {
     display: flex;
@@ -52,7 +62,7 @@
 }
 
 .btn_close {
-    background-color: dimgray;
+    background-color: grey;
     color: aliceblue;
     height: 35px;
     width: 100px;
@@ -60,6 +70,7 @@
     font-size: 15px;
     border-radius: 5px;
     margin-top: 20px;
+    border: none;
 }
 
 .btn_modify {
@@ -71,4 +82,18 @@
     font-size: 12px;
     border-radius: 5px;
     margin-top: 20px;
+    border: none;
+}
+
+.labels {
+    margin-bottom: 5px;
+}
+
+.asterisco {
+    color: red;
+    font-size: 20px;
+}
+
+:focus-visible {
+    outline: 3px solid #9999FF;
 }

@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { ModifyGift } from './modify';
 import { List } from "../interfaces/List"
+import s from "../style/inicio.module.css"
 
 type Props = { //mediante la palabra clave type permite crear nuevos tipos y luego reutilizarlos
     setLista: ([]) => void;
@@ -21,10 +22,8 @@ export default function EditModal({setLista, lista, edit}: Props) {
 
   return (
     <div>
-      <Button 
-      onClick={handleOpen}
-      >
-        <FontAwesomeIcon icon={faPenToSquare} />
+      <Button onClick={handleOpen}>
+        <FontAwesomeIcon icon={faPenToSquare} className={s.trash}/>
       </Button>
 
       <Modal

@@ -49,8 +49,9 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
     return (
         <div>
             <form className={s.form}>
+                <label className={s.labels}>Regalo<span className={s.asterisco}>*</span>: </label>
                 <input
-                className={s.input}
+                className={s.input} 
                 required
                 type='text'
                 name="nombre"
@@ -58,6 +59,7 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
                 placeholder='Añadir regalo'
                 onChange={handleChange}
                 />
+                <label className={s.labels}>Destinatario<span className={s.asterisco}>*</span>: </label>
                 <input
                 className={s.input}
                 required
@@ -67,14 +69,16 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
                 placeholder='Este regalo es para...'
                 onChange={handleChange}
                 />
+                <label className={s.labels}>Imagen: </label>
                 <input 
                 className={s.input_img}
-                type='text'
+                type='url'
                 value={regalo.imagen}
                 name='imagen'
                 placeholder="http://image..."
                 onChange={handleChange}
                 />
+                <label className={s.labels}>Cantidad: </label>
                 <input
                 className={s.cantidad}
                 type='number'
