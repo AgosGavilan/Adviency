@@ -102,3 +102,9 @@
     cursor: pointer;
     margin-right: 2px;
 }
+
+.loading {
+    font-size: 30px;
+    padding: 40px 40px 20px;
+    margin-bottom: 70px;
+}

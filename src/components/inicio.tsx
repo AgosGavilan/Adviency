@@ -6,29 +6,39 @@ import img from '../assets/png-transparent-christmas-gift-christmas-gift-gift-mi
 import InputModal from "./inputModal"
 import EditModal from "./editModal";
 import { List } from "../interfaces/List"
+import api from "../helpers/api";
+import { Loading } from "./loading";
 
 export const Inicio = () : JSX.Element => {
-    //const [lista, setLista] = useState<List[]>([])
-    const [lista, setLista] = useState<List[]>(() => { //lista va a recibir un cb que puede retornar o un objeto o un array vacio
-        // para obtener el valor del almacenamiento
-        const saved = localStorage.getItem("lista"); //obengo la key 'lista' del objeto localStorage
-        if(saved) { //si tengo ese key guardada
-            const initialValue = JSON.parse(saved); //parsealo a objeto ya que esta guardado en mi LS como un string
-            return initialValue || []; //y retorname el objeto si mi key 'lista' tiene algo, sino retorname entonces un array vacío
-        }
-      });
+    const [lista, setLista] = useState<List[]>([]);
+    const [loading, setLoading] = useState<boolean>(false)
 
-    useEffect(() => { //cuando montes el componente
-        localStorage.setItem('lista', JSON.stringify(lista)) //con setItem almacenamos en el objeto localStorage un par clave/valor. En este caso, agregamos al LS = {'lista': (aca puede ir o mi array vacio '[]' si es que no tengo nada o mi array con mis regalos '[{}, {} ...]')}
+    useEffect(() => {
+        setLoading(true);
+        api.gifts.list()
+        .then(lista => setLista(lista.data))
+        .finally(() => setLoading(false))
+    }, [])
+
+    useEffect(() => {
+        if(lista.length > 0) { // si mi lista esta cargada
+            api.gifts.save(lista) //guardame lo que tenga lista en mi LS
+            .then(console.log)
+            .catch(console.log)
+        }
     }, [lista])
 
-    function handleDelete(r: any) :void { //por parametro me llego el regalo que tengo que eliminar
+    function handleDelete(r: string) :void { //por parametro me llego el regalo que tengo que eliminar
         setLista(lista.filter(g => g.nombre !== r)) //y le digo que filtre por aquellos regalos que no se llamen igual que mi regalo a eliminar
-        window.localStorage.setItem('lista', JSON.stringify(lista.filter(g => g.nombre !== r)))
+        localStorage.setItem('lista', JSON.stringify(lista.filter(g => g.nombre !== r)))
     }
 
     function deleteAll () :void {
        setLista([])
+    }
+
+    if(loading) {
+        return <Loading />
     }
 
     return(
@@ -75,3 +85,27 @@ export const Inicio = () : JSX.Element => {
         </div>
     )
 }
+
+
+
+//ASI UTILIZAMOS EL LOCALSTORAGE SIN API.TSX
+// const [lista, setLista] = useState<List[]>(() => { //lista va a recibir un cb que puede retornar o un objeto o un array vacio
+//     // para obtener el valor del almacenamiento
+//     const saved = localStorage.getItem("lista"); //obengo la key 'lista' del objeto localStorage
+//     if(saved) { //si tengo ese key guardada
+//         const initialValue = JSON.parse(saved); //parsealo a objeto ya que esta guardado en mi LS como un string
+//         return initialValue || []; //y retorname el objeto si mi key 'lista' tiene algo, sino retorname entonces un array vacío
+//     }
+//   });
+
+
+
+// useEffect(() => { //cuando montes el componente
+//     localStorage.setItem('lista', JSON.stringify(lista)) //con setItem almacenamos en el objeto localStorage un par clave/valor. En este caso, agregamos al LS = {'lista': (aca puede ir o mi array vacio '[]' si es que no tengo nada o mi array con mis regalos '[{}, {} ...]')}
+// }, [lista])
+
+
+//La propiedad localStorage te permite acceder al OBJETO local "Storage"
+
+//PARA GUARDAR DATOS EN MI LOCALSTORAGE = localStorage.setItem(name, content). Con setItem agregamos una key(name) y un value(content) al objeto Storage
+//PARA LEER UN ITEM ALMACENADO EN MI LOCALSTORAGE = localStorage.getItem(name)

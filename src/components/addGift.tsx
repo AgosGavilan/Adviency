@@ -41,7 +41,7 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
             imagen: '',
             destinatario: ''
         })
-        console.log("soy id: ", regalo)
+        //console.log("soy id: ", regalo)
         handleClose()
     }
 
