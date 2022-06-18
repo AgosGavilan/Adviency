@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import Tooltip from '@mui/material/Tooltip';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { ModifyGift } from './modify';
@@ -22,10 +23,11 @@ export default function EditModal({setLista, lista, edit}: Props) {
 
   return (
     <div>
+      <Tooltip title="Editar">
       <Button onClick={handleOpen}>
         <FontAwesomeIcon icon={faPenToSquare} className={s.trash}/>
       </Button>
-
+      </Tooltip>
       <Modal
         open={open}
         onClose={handleClose}
@@ -45,9 +47,9 @@ const style = {
     top: '35%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'antiquewhite',
-    border: '2px solid #000',
+    width: 350,
+    bgcolor: 'white',
+    border: 'none',
     boxShadow: 24,
     p: 4,
     borderRadius: 2.5

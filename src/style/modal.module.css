@@ -1,5 +1,5 @@
 .btn_modal {
     display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+    justify-content: flex-end;
+    /* margin-bottom: 10px;*/
 }

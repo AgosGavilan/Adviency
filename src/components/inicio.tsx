@@ -8,6 +8,7 @@ import EditModal from "./editModal";
 import { List } from "../interfaces/List"
 import api from "../helpers/api";
 import { Loading } from "./loading";
+import Tooltip from '@mui/material/Tooltip';
 
 export const Inicio = () : JSX.Element => {
     const [lista, setLista] = useState<List[]>([]);
@@ -44,17 +45,13 @@ export const Inicio = () : JSX.Element => {
     return(
         <div className={s.main}>
             <div className={s.box}>
+                < InputModal setLista={setLista} lista={lista} />
                 <div className={s.title}>
                     <h1>Regalos:</h1>
                 </div>
-
-                < InputModal setLista={setLista} lista={lista} />
-
                 {lista.length ? lista.map(r => (
                         <ul key={r.id}>
                             <li key={r.id} className={s.li}>
-
-                                {/* nombre, imagen y destinatario del regalo */}
                                 <span className={s.img_name_q}>
                                     <span style={span_circle}>
                                         <img src={r.imagen ? r.imagen : img} alt='gift' width="40px" height="40px"/>
@@ -65,16 +62,16 @@ export const Inicio = () : JSX.Element => {
                                         <p className={s.destinatario}>{r.destinatario}</p>
                                     </span>
                                 </span>
-
-                                {/* botones de editar y eliminar regalo */}
                                 <span className={s.span_buttons}>
                                     <EditModal setLista={setLista} lista={lista} edit={r}/>
-                                    <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
-                                    onClick={()=> handleDelete(r.id)} //asi que por parametro le paso a la funcion el elemento (r)
-                                    className={s.trash}
-                                    >
-                                        <FontAwesomeIcon icon={faTrashCan} />
-                                    </button>
+                                    <Tooltip title="Eliminar">
+                                        <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
+                                        onClick={()=> handleDelete(r.id)} //asi que por parametro le paso a la funcion el elemento (r)
+                                        className={s.trash}
+                                        >
+                                            <FontAwesomeIcon icon={faTrashCan} />
+                                        </button>
+                                    </Tooltip>
                                 </span>
                             </li>
                         </ul>

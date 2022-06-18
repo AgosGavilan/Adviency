@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import Tooltip from '@mui/material/Tooltip';
 import { AddGift } from './addGift';
 import s from '../style/modal.module.css'
 import gift from '../assets/1añada-el-icono-del-esquema-de-la-caja-regalo-134826450-removebg-preview.png';
@@ -15,9 +16,11 @@ export default function InputModal({setLista, lista}: Props) {
   return (
     <div >
       <div className={s.btn_modal}>
-        <Button onClick={handleOpen}>
-          <img src={gift} alt='gift' height='45px' width='45px'/>
-        </Button>
+        <Tooltip title="Agregar Regalo">
+          <Button onClick={handleOpen}>
+            <img src={gift} alt='gift' height='40px' width='40px'/>
+          </Button>
+        </Tooltip>
       </div>
       <Modal
         open={open}
@@ -39,9 +42,9 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'antiquewhite',
+  bgcolor: 'white',
   border: 'none',
   boxShadow: 24,
   p: 4,
-  borderRadius: 2.5
+  borderRadius: 1.25
 };

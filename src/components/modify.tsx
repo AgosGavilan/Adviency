@@ -61,7 +61,6 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 type='text'
                 name="destinatario"
                 value={editar.destinatario}
-                //placeholder='Este regalo es para...'
                 onChange={handleChange}
                 autoFocus
                 />
@@ -71,7 +70,7 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 type='url'
                 value={editar.imagen}
                 name='imagen'
-                //placeholder="http://image..."
+                placeholder="http://image..."
                 onChange={handleChange}
                 autoFocus
                 />

@@ -75,7 +75,7 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
                     className={s.btn_sorprendeme}
                     onClick={handleAleatorio}
                     >
-                        Sorprendeme
+                        ¡Sorpréndeme!
                     </button>
                     </span>
                 <label className={s.labels}>Destinatario<span className={s.asterisco}>*</span>: </label>
