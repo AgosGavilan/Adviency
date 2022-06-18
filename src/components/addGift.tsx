@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import s from '../style/add.module.css'
 import { List } from "../interfaces/List"
 
-type Props = { //mediante la palabra clave type permite crear nuevos tipos y luego reutilizarlos
+type Props = { //la palabra clave type permite crear nuevos tipos y luego reutilizarlos
     setLista: ([]) => void;
     lista: List[]; //Y DE ESTA MANERA SE TYPEA UN ARRAY DE OBJETOS
     handleClose: () => void
 }
 
 //export const AddGift: React.FC<Props> = ({setLista, lista}) => {} //Las FC pueden ser escritos como funciones normales que toman props como argumentos y retornan un elemento JSX
-export const AddGift = ({setLista, lista, handleClose}: Props) => { 
+export const AddGift = ({setLista, lista, handleClose}: Props) => {
+    const nombres = ["Computadora", "Medias", "Cartera", "Perfume", "Maquillaje", "Juego de mate", "Mochila"]
+    const aleatorio = nombres[Math.floor(Math.random() * nombres.length)]
     const [regalo, setRegalo] = useState({
         id: Math.random(),
-        nombre: '',
+        nombre: '' ,
         cantidad: 1,
         imagen: '',
         destinatario: ''
@@ -27,13 +29,23 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
         }))
     }
 
+    function handleAleatorio(e: any) {
+        e.preventDefault()
+        setRegalo((prev: List) => ({
+            ...prev,
+            nombre: aleatorio
+        }))
+        
+
+    }
+
     function handleSubmit (e: any) :void{
         e.preventDefault()
-        let noRepeat = lista.filter(el => el.nombre === regalo.nombre)
-        if(noRepeat.length !== 0) {
-            alert("Ya existe un regalo con ese nombre")
-        }
-        else {setLista([...lista, regalo])}
+        // let noRepeat = lista.filter(el => el.nombre === regalo.nombre)
+        // if(noRepeat.length !== 0) {
+        //     alert("Ya existe un regalo con ese nombre")
+        // }
+        setLista([...lista, regalo])
         setRegalo({
             id: regalo.id,
             nombre: '',
@@ -41,7 +53,6 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
             imagen: '',
             destinatario: ''
         })
-        //console.log("soy id: ", regalo)
         handleClose()
     }
 
@@ -50,15 +61,23 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
         <div>
             <form className={s.form}>
                 <label className={s.labels}>Regalo<span className={s.asterisco}>*</span>: </label>
+                <span className={s.sorprendeme}>
                 <input
                 className={s.input} 
                 required
                 type='text'
                 name="nombre"
                 value={regalo.nombre}
-                placeholder='Añadir regalo'
+                placeholder='Elegir regalo al azahar'
                 onChange={handleChange}
                 />
+                    <button
+                    className={s.btn_sorprendeme}
+                    onClick={handleAleatorio}
+                    >
+                        Sorprendeme
+                    </button>
+                    </span>
                 <label className={s.labels}>Destinatario<span className={s.asterisco}>*</span>: </label>
                 <input
                 className={s.input}

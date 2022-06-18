@@ -85,6 +85,26 @@
     border: none;
 }
 
+.sorprendeme {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sorprendeme input {
+    width: 220px;
+}
+
+.btn_sorprendeme {
+    height: 30px;
+    padding: 5px;
+    border: none;
+    background-color: mediumseagreen;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 .labels {
     margin-bottom: 5px;
 }

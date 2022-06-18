@@ -29,6 +29,7 @@
     margin-bottom: 70px;
     border-radius: 10px;
     width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .li {
@@ -63,7 +64,7 @@
 .trashAll {
     height: 33px;
     width: 100%;
-    background-color: darkgrey;
+    background-color: indianred;
     color: aliceblue;
     border-radius: 5px;
     font-family: 'Tiro Tamil', serif;
@@ -86,6 +87,20 @@
 .img_name_q {
     display: flex;
     flex-direction: row;
+}
+
+.rounded_circle {
+  position: absolute;
+  background: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 2px;
+  margin-left: 32px;
 }
 
 .destinatario {

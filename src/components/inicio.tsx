@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import s from '../style/inicio.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -28,9 +28,9 @@ export const Inicio = () : JSX.Element => {
         }
     }, [lista])
 
-    function handleDelete(r: string) :void { //por parametro me llego el regalo que tengo que eliminar
-        setLista(lista.filter(g => g.nombre !== r)) //y le digo que filtre por aquellos regalos que no se llamen igual que mi regalo a eliminar
-        localStorage.setItem('lista', JSON.stringify(lista.filter(g => g.nombre !== r)))
+    function handleDelete(r: number) :void { //por parametro me llego el regalo que tengo que eliminar
+        setLista(lista.filter(g => g.id !== r)) //y le digo que filtre por aquellos regalos que no se llamen igual que mi regalo a eliminar
+        localStorage.setItem('lista', JSON.stringify(lista.filter(g => g.id !== r)))
     }
 
     function deleteAll () :void {
@@ -56,9 +56,12 @@ export const Inicio = () : JSX.Element => {
 
                                 {/* nombre, imagen y destinatario del regalo */}
                                 <span className={s.img_name_q}>
-                                    <img src={r.imagen ? r.imagen : img} alt='gift' width="40px" height="40px"/>
+                                    <span style={span_circle}>
+                                        <img src={r.imagen ? r.imagen : img} alt='gift' width="40px" height="40px"/>
+                                        <span className={s.rounded_circle}>{r.cantidad}</span>
+                                    </span>
                                     <span>
-                                        <p className={s.nombre_regalo}>{`${r.nombre}   x${r.cantidad}`}</p>
+                                        <p className={s.nombre_regalo}>{r.nombre}</p>
                                         <p className={s.destinatario}>{r.destinatario}</p>
                                     </span>
                                 </span>
@@ -67,7 +70,7 @@ export const Inicio = () : JSX.Element => {
                                 <span className={s.span_buttons}>
                                     <EditModal setLista={setLista} lista={lista} edit={r}/>
                                     <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
-                                    onClick={()=> handleDelete(r.nombre)} //asi que por parametro le paso a la funcion el elemento (r)
+                                    onClick={()=> handleDelete(r.id)} //asi que por parametro le paso a la funcion el elemento (r)
                                     className={s.trash}
                                     >
                                         <FontAwesomeIcon icon={faTrashCan} />
@@ -84,6 +87,11 @@ export const Inicio = () : JSX.Element => {
             </div>
         </div>
     )
+}
+
+const span_circle = {
+    display: "flex",
+    marginRight: '10px'
 }
 
 
