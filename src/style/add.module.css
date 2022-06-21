@@ -1,7 +1,7 @@
 .input {
     height: 35px;
     font-size: 15px;
-    padding: 5px;
+    padding: 8px;
     /* outline: none; elimina el recuadro de todo el input cuando hago click en el input */
     margin-bottom: 15px;
     border: none;
@@ -17,17 +17,18 @@
     border: none;
     /* border-bottom: 1px solid; */
     background-color: lavender;
-    padding: 5px;
+    padding: 8px;
     border-radius: 3px;
 }
 
 .cantidad {
     height: 35px;
     font-size: 15px;
+    margin-bottom: 15px;
     border: none;
     /* border-bottom: 1px solid; */
     background-color: lavender;
-    padding: 5px;
+    padding: 8px;
     border-radius: 3px;
 }
 
@@ -92,7 +93,7 @@
 }
 
 .sorprendeme input {
-    width: 170px;
+    width: 14rem;
 }
 
 .btn_sorprendeme {
@@ -118,3 +119,27 @@
 :focus-visible {
     outline: 1.8px solid #9999FF;
 }
+
+.container_precio{
+    display: flex;
+}
+
+.container_precio input {
+    width: 296px;
+}
+
+.box_signo {
+    width: 2.5rem;
+    text-align: center;
+    height: 35px;
+    font-size: 15px;
+    background-color: lightgrey;
+    border-radius: 3px
+}
+
+.signo {
+    margin: 6px;
+    font-weight: 500;
+    color: black;
+}
+

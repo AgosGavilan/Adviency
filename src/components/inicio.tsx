@@ -49,33 +49,35 @@ export const Inicio = () : JSX.Element => {
                 <div className={s.title}>
                     <h1>Regalos:</h1>
                 </div>
-                {lista.length ? lista.map(r => (
-                        <ul key={r.id}>
-                            <li key={r.id} className={s.li}>
-                                <span className={s.img_name_q}>
-                                    <span style={span_circle}>
-                                        <img src={r.imagen ? r.imagen : img} alt='gift' width="40px" height="40px"/>
-                                        <span className={s.rounded_circle}>{r.cantidad}</span>
+                <div>
+                    {lista.length ? lista.map(r => (
+                            <ul key={r.id}>
+                                <li key={r.id} className={s.li}>
+                                    <span className={s.img_name_q}>
+                                        <span style={span_circle}>
+                                            <img src={r.imagen ? r.imagen : img} alt='gift' width="40px" height="40px"/>
+                                            <span className={s.rounded_circle}>{r.cantidad}</span>
+                                        </span>
+                                        <span>
+                                            <p className={s.nombre_regalo}>{r.nombre} - $ {new Intl.NumberFormat('es-AR').format(r.cantidad * r.precio)}</p>
+                                            <p className={s.destinatario}>{r.destinatario}</p>
+                                        </span>
                                     </span>
-                                    <span>
-                                        <p className={s.nombre_regalo}>{r.nombre}</p>
-                                        <p className={s.destinatario}>{r.destinatario}</p>
+                                    <span className={s.span_buttons}>
+                                        <EditModal setLista={setLista} lista={lista} edit={r}/>
+                                        <Tooltip title="Eliminar">
+                                            <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
+                                            onClick={()=> handleDelete(r.id)} //asi que por parametro le paso a la funcion el elemento (r)
+                                            className={s.trash}
+                                            >
+                                                <FontAwesomeIcon icon={faTrashCan} />
+                                            </button>
+                                        </Tooltip>
                                     </span>
-                                </span>
-                                <span className={s.span_buttons}>
-                                    <EditModal setLista={setLista} lista={lista} edit={r}/>
-                                    <Tooltip title="Eliminar">
-                                        <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
-                                        onClick={()=> handleDelete(r.id)} //asi que por parametro le paso a la funcion el elemento (r)
-                                        className={s.trash}
-                                        >
-                                            <FontAwesomeIcon icon={faTrashCan} />
-                                        </button>
-                                    </Tooltip>
-                                </span>
-                            </li>
-                        </ul>
-                )): <div className={s.emptyList}>La lista esta vacía 😔 ¡Agrega algo!</div>}
+                                </li>
+                            </ul>
+                    )): <div className={s.emptyList}>La lista esta vacía 😔 ¡Agrega algo!</div>}
+                </div>
                 {lista.length
                 ? <div className={s.trashAll_container}>
                     <button onClick={deleteAll} className={s.trashAll}>Borrar todo</button>
@@ -88,7 +90,7 @@ export const Inicio = () : JSX.Element => {
 
 const span_circle = {
     display: "flex",
-    marginRight: '10px'
+    marginRight: '5px'
 }
 
 

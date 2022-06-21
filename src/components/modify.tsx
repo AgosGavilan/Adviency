@@ -15,7 +15,8 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
         nombre: edit.nombre,
         cantidad: edit.cantidad > 1 ? edit.cantidad : 1,
         imagen: edit.imagen,
-        destinatario: edit.destinatario
+        destinatario: edit.destinatario,
+        precio: edit.precio
     })
 
     function handleChange(e: any) :void {
@@ -28,11 +29,6 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
 
     function handleEdit (e: any) {
         e.preventDefault()
-        // let noRepeat = lista.filter(el => el.nombre === editar.nombre)
-        // if(noRepeat.length !== 0) {
-        //     alert("Ya existe un regalo con ese nombre")
-        //     return   
-        // }
         let filtrados = lista.filter(el => el !== edit) //elimino el regalo que quiero editar
         filtrados.push(editar) //agrego el nuevo regalo, modificado
         lista = filtrados
@@ -84,6 +80,19 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 onChange={handleChange}
                 autoFocus
                 />
+                <label className={s.labels}>Precio:  </label>
+                <span className={s.container_precio}>
+                    <span className={s.box_signo}><p className={s.signo}>$</p></span>
+                    <input
+                    className={s.input}
+                    required
+                    type='number'
+                    name='precio'
+                    value={editar.precio}
+                    onChange={handleChange}
+                    autoFocus
+                    />
+                </span>
                 <div className={s.btn_form}>
                     <button
                     type='button'

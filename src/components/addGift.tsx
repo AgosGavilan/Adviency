@@ -17,7 +17,8 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
         nombre: '' ,
         cantidad: 1,
         imagen: '',
-        destinatario: ''
+        destinatario: '',
+        precio: 0
     })
 
 
@@ -41,17 +42,14 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
 
     function handleSubmit (e: any) :void{
         e.preventDefault()
-        // let noRepeat = lista.filter(el => el.nombre === regalo.nombre)
-        // if(noRepeat.length !== 0) {
-        //     alert("Ya existe un regalo con ese nombre")
-        // }
         setLista([...lista, regalo])
         setRegalo({
             id: regalo.id,
             nombre: '',
             cantidad: 1,
             imagen: '',
-            destinatario: ''
+            destinatario: '',
+            precio: 0
         })
         handleClose()
     }
@@ -68,7 +66,7 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
                 type='text'
                 name="nombre"
                 value={regalo.nombre}
-                placeholder='Elegir regalo al azahar'
+                placeholder='Regalo...'
                 onChange={handleChange}
                 />
                     <button
@@ -106,6 +104,18 @@ export const AddGift = ({setLista, lista, handleClose}: Props) => {
                 name='cantidad'
                 onChange={handleChange}
                 />
+                <label className={s.labels}>Precio:  </label>
+                <span className={s.container_precio}>
+                    <span className={s.box_signo}><p className={s.signo}>$</p></span>
+                    <input
+                    className={s.input}
+                    required
+                    type='number'
+                    name='precio'
+                    value={regalo.precio}
+                    onChange={handleChange}
+                    />
+                </span>
                 <div className={s.btn_form}>
                     <button
                     type='button'

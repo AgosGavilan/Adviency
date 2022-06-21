@@ -44,10 +44,10 @@ export default function EditModal({setLista, lista, edit}: Props) {
 
 const style = {
     position: 'absolute' as 'absolute',
-    top: '35%',
+    top: '45%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 350,
+    width: 400,
     bgcolor: 'white',
     border: 'none',
     boxShadow: 24,

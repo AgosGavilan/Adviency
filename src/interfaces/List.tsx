@@ -6,4 +6,5 @@ export interface List {
     cantidad: number;
     imagen: string;
     destinatario: string;
+    precio: number;
 }
