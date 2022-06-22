@@ -12,7 +12,8 @@ import Tooltip from '@mui/material/Tooltip';
 
 export const Inicio = () : JSX.Element => {
     const [lista, setLista] = useState<List[]>([]);
-    const [loading, setLoading] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(false);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
         setLoading(true);
@@ -28,6 +29,14 @@ export const Inicio = () : JSX.Element => {
             .catch(console.log)
         }
     }, [lista])
+
+    useEffect(() => {
+        let price = 0
+        lista.forEach(el => {
+            price += el.cantidad * el.precio
+        })
+        setTotalPrice(price);
+    }, [lista, totalPrice, setTotalPrice])
 
     function handleDelete(r: number) :void { //por parametro me llego el regalo que tengo que eliminar
         setLista(lista.filter(g => g.id !== r)) //y le digo que filtre por aquellos regalos que no se llamen igual que mi regalo a eliminar
@@ -49,7 +58,7 @@ export const Inicio = () : JSX.Element => {
                 <div className={s.title}>
                     <h1>Regalos:</h1>
                 </div>
-                <div>
+                <div className={lista.length > 3 ? s.container_regalos : ""}>
                     {lista.length ? lista.map(r => (
                             <ul key={r.id}>
                                 <li key={r.id} className={s.li}>
@@ -78,10 +87,16 @@ export const Inicio = () : JSX.Element => {
                             </ul>
                     )): <div className={s.emptyList}>La lista esta vacía 😔 ¡Agrega algo!</div>}
                 </div>
-                {lista.length
-                ? <div className={s.trashAll_container}>
-                    <button onClick={deleteAll} className={s.trashAll}>Borrar todo</button>
-                </div> 
+                {lista.length ? 
+                <>
+                    <hr className={s.raya} />
+                    <div className={s.containter_total}>
+                        <p className={s.total}>Total: $ {new Intl.NumberFormat('es-AR').format(totalPrice)}</p>
+                    </div>
+                    <div className={s.trashAll_container}>
+                        <button onClick={deleteAll} className={s.trashAll}>Borrar todo</button>
+                    </div>
+                </>
                 : ""}
             </div>
         </div>

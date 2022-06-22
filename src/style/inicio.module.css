@@ -8,6 +8,11 @@
     box-sizing: border-box;
 }
 
+.container_regalos {
+    max-height: 150px;
+    overflow-y: scroll;
+}
+
 .title {
     font-family: 'Sacramento', cursive;
     text-align: center;
@@ -25,7 +30,7 @@
 .box {
     background-color: white;
     font-size: 30px;
-    padding: 40px 40px 20px;
+    padding: 30px 35px 20px;
     margin-bottom: 70px;
     margin-left: 150px;
     border-radius: 5px;
@@ -48,8 +53,6 @@
     cursor: pointer;
     margin-right: 10px;
 }
-
-
 
 .emptyList {
     font-family: 'Tiro Tamil', serif;
@@ -122,4 +125,20 @@
     font-size: 30px;
     padding: 40px 40px 20px;
     margin-bottom: 70px;
+}
+
+.raya {
+    margin: 1.1rem 0;
+}
+
+.containter_total {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total {
+    font-family: 'Tiro Tamil', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
 }
