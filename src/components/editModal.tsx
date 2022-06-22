@@ -22,7 +22,7 @@ export default function EditModal({setLista, lista, edit}: Props) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <div style={box_edit}>
       <Tooltip title="Editar">
       <Button onClick={handleOpen}>
         <FontAwesomeIcon icon={faPenToSquare} className={s.trash}/>
@@ -53,4 +53,8 @@ const style = {
     boxShadow: 24,
     p: 4,
     borderRadius: 2.5
-        };
+};
+
+const box_edit = {
+  width: 50
+}

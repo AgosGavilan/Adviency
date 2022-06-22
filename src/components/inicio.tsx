@@ -9,6 +9,7 @@ import { List } from "../interfaces/List"
 import api from "../helpers/api";
 import { Loading } from "./loading";
 import Tooltip from '@mui/material/Tooltip';
+import { CopyModal } from "./copyModal";
 
 export const Inicio = () : JSX.Element => {
     const [lista, setLista] = useState<List[]>([]);
@@ -74,6 +75,7 @@ export const Inicio = () : JSX.Element => {
                                     </span>
                                     <span className={s.span_buttons}>
                                         <EditModal setLista={setLista} lista={lista} edit={r}/>
+                                        <CopyModal setLista={setLista} lista={lista} copy={r}/>
                                         <Tooltip title="Eliminar">
                                             <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
                                             onClick={()=> handleDelete(r.id)} //asi que por parametro le paso a la funcion el elemento (r)

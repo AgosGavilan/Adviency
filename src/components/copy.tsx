@@ -1,44 +1,50 @@
 import React from "react";
-import { List } from "../interfaces/List"
-import s from "../style/add.module.css"
+import { List } from "../interfaces/List";
+import s from '../style/add.module.css'
 
 type Props = { 
     setLista: ([]) => void;
     lista: List[];
     handleClose: () => void;
-    edit: List
+    copy: List
 }
 
-export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
-    const [editar, setEditar] = React.useState({
-        id: edit.id,
-        nombre: edit.nombre,
-        cantidad: edit.cantidad > 1 ? edit.cantidad : 1,
-        imagen: edit.imagen,
-        destinatario: edit.destinatario,
-        precio: edit.precio
+export const Copy = ({setLista, lista, handleClose, copy}: Props) => {
+    const [copiar, setCopiar] = React.useState({
+        id: Math.random(),
+        nombre: copy.nombre,
+        cantidad: copy.cantidad > 1 ? copy.cantidad : 1,
+        imagen: copy.imagen,
+        destinatario: '',
+        precio: copy.precio
     })
 
     function handleChange(e: any) :void {
         e.preventDefault()
-        setEditar((prev: List) => ({
+        setCopiar((prev: List) => ({
             ...prev, 
             [e.target.name]: e.target.value
         }))
     }
 
-    function handleEdit (e: any) {
+    function handleSubmitCopy(e: any) :void {
         e.preventDefault()
-        let filtrados = lista.filter(el => el !== edit) //elimino el regalo que quiero editar
-        filtrados.push(editar) //agrego el nuevo regalo, modificado
-        lista = filtrados
-        setLista([...lista])
+        setLista([...lista, copiar])
+        setCopiar({
+            id: copiar.id,
+            nombre: copy.nombre,
+            cantidad: copy.cantidad > 1 ? copy.cantidad : 1,
+            imagen: copy.imagen,
+            destinatario: '',
+            precio: copy.precio
+        })
         handleClose()
     }
 
 
+
     return (
-        <div>
+        <>
             <form className={s.form}>
                 <label className={s.labels}>Regalo<span className={s.asterisco}>*</span>: </label>
                 <input
@@ -46,7 +52,7 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 required
                 type='text'
                 name="nombre"
-                value={editar.nombre}
+                value={copiar.nombre}
                 onChange={handleChange}
                 autoFocus
                 />
@@ -56,7 +62,8 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 required
                 type='text'
                 name="destinatario"
-                value={editar.destinatario}
+                value={copiar.destinatario}
+                placeholder='Este regalo es para...'
                 onChange={handleChange}
                 autoFocus
                 />
@@ -64,23 +71,23 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 <input 
                 className={s.input_img}
                 type='url'
-                value={editar.imagen}
+                value={copiar.imagen}
                 name='imagen'
                 placeholder="http://image..."
                 onChange={handleChange}
                 autoFocus
                 />
-                <label className={s.labels}>Cantidad<span className={s.asterisco}>*</span>: </label>
+                <label className={s.labels}>Cantidad: </label>
                 <input
                 className={s.cantidad}
                 type='number'
                 min={1}
-                value={editar.cantidad}
+                value={copiar.cantidad}
                 name='cantidad'
                 onChange={handleChange}
                 autoFocus
                 />
-                <label className={s.labels}>Precio:  </label>
+                <label className={s.labels}>Precio<span className={s.asterisco}>*</span>:  </label>
                 <span className={s.container_precio}>
                     <span className={s.box_signo}><p className={s.signo}>$</p></span>
                     <input
@@ -88,7 +95,7 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                     required
                     type='number'
                     name='precio'
-                    value={editar.precio}
+                    value={copiar.precio}
                     onChange={handleChange}
                     autoFocus
                     />
@@ -105,13 +112,12 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                     <button
                     className={s.btn_modify}
                     type="submit"
-                    onClick={handleEdit}
+                    onClick={handleSubmitCopy}
                     autoFocus>
-                        Guardar cambios
+                        Agregar
                     </button>
                 </div>
             </form>
-
-        </div>
+        </>
     )
 }
