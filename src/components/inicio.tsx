@@ -10,6 +10,7 @@ import api from "../helpers/api";
 import { Loading } from "./loading";
 import Tooltip from '@mui/material/Tooltip';
 import { CopyModal } from "./copyModal";
+import { PrevModal } from "./prevModal";
 
 export const Inicio = () : JSX.Element => {
     const [lista, setLista] = useState<List[]>([]);
@@ -98,6 +99,7 @@ export const Inicio = () : JSX.Element => {
                     <div className={s.trashAll_container}>
                         <button onClick={deleteAll} className={s.trashAll}>Borrar todo</button>
                     </div>
+                    <PrevModal lista={lista}/>
                 </>
                 : ""}
             </div>
