@@ -1,7 +1,10 @@
 import React from "react";
 import { List } from '../interfaces/List'
 import img from '../assets/png-transparent-christmas-gift-christmas-gift-gift-miscellaneous-ribbon-desktop-wallpaper-removebg-preview.png'
-import s from '../style/inicio.module.css'
+import s from '../style/inicio.module.css';
+import a from '../style/add.module.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faPrint} from "@fortawesome/free-solid-svg-icons"
 
 type PropsPrev = {
     lista: List[];
@@ -9,6 +12,11 @@ type PropsPrev = {
 }
 
 export const Previsualizacion = ({lista, handleClose}:PropsPrev) => {
+
+    function handlePrint () {
+        window.print()
+    }
+
     return (
         <div>
             <div className={s.title}>
@@ -31,14 +39,22 @@ export const Previsualizacion = ({lista, handleClose}:PropsPrev) => {
                     </ul>
                 )) : ""}
             </div>
-            <div>
+            <div className={a.btn_form}>
                 <button
                 type='button'
                 autoFocus
-                className={s.btn_close}
+                className={a.btn_close}
                 onClick={handleClose}
                 >
                 Cerrar
+                </button>
+                <button
+                type="button"
+                value="imprimir"
+                className={a.btn}
+                onClick={handlePrint}
+                >
+                    <FontAwesomeIcon icon={faPrint}/>
                 </button>
             </div>
         </div>

@@ -143,3 +143,11 @@
     color: black;
 }
 
+@media print { /*CUANDO VOY A IMPRIMIR, NO QUIERO QUE SE VEAN LOS BOTONES DEL MODAL*/
+    .btn_close {
+        display: none;
+    }
+    .btn {
+        display: none;
+    }
+}
