@@ -18,7 +18,9 @@ export const PrevModal = ({lista}:PropsPrev) => {
   return (
     <div>
         <div className={s.btn_prev}>
-            <Button onClick={handleOpen}><p className={s.previsualizar}>Previsualizar</p></Button>
+            <Button onClick={handleOpen} sx={text}>
+              <p className={s.previsualizar}>Previsualizar</p>
+              </Button>
         </div>
       <Modal
         open={open}
@@ -47,3 +49,7 @@ const style = {
     borderRadius: 1.25,
     padding: 5
   };
+
+  const text = {
+    textTransform: "none"
+  }

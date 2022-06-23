@@ -14,10 +14,40 @@
 }
 
 .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     font-family: 'Sacramento', cursive;
     text-align: center;
     margin-bottom: 15px;
-    font-size: 35px;
+    font-size: 40px;
+}
+
+.box_music {
+    display: flex;
+    align-items: center;
+}
+
+.btn_music {
+    font-size: 20px;
+    background: none;
+    color: forestgreen;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.btn_music_pausa {
+    background: none;
+    font-size: 22px;
+    color: red;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
 }
 
 .box ul {
@@ -30,7 +60,7 @@
 .box {
     background-color: white;
     font-size: 30px;
-    padding: 30px 35px 20px;
+    padding: 20px 35px;
     margin-bottom: 70px;
     margin-left: 150px;
     border-radius: 5px;
@@ -69,7 +99,7 @@
 .trashAll {
     height: 33px;
     width: 100%;
-    background-color: lightgray;
+    background-color: palegoldenrod;
     color: dimgray;
     border-radius: 5px;
     font-family: 'Tiro Tamil', serif;
@@ -164,6 +194,7 @@
     background-color: lightgray;
     border-radius: 5px;
     height: 33px;
+    cursor: pointer;
 }
 
 .previsualizar {

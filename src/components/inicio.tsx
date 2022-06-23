@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import s from '../style/inicio.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faVolumeUp, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 import img from '../assets/png-transparent-christmas-gift-christmas-gift-gift-miscellaneous-ribbon-desktop-wallpaper-removebg-preview.png'
 import InputModal from "./inputModal"
 import EditModal from "./editModal";
@@ -16,6 +16,8 @@ export const Inicio = () : JSX.Element => {
     const [lista, setLista] = useState<List[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [sonido, setSonido] = useState<any>('');
+    const [pausa, setPausa] = useState<boolean>(true)
 
     useEffect(() => {
         setLoading(true);
@@ -40,6 +42,14 @@ export const Inicio = () : JSX.Element => {
         setTotalPrice(price);
     }, [lista, totalPrice, setTotalPrice])
 
+    useEffect (() => {
+        const url = 'https://andresguanov.github.io/assets/christmas.mp3'
+        const musica = new Audio(url)
+        musica.volume = 0.5
+        musica.loop = true
+        setSonido(musica)
+    }, [])
+
     function handleDelete(r: number) :void { //por parametro me llego el regalo que tengo que eliminar
         setLista(lista.filter(g => g.id !== r)) //y le digo que filtre por aquellos regalos que no se llamen igual que mi regalo a eliminar
         localStorage.setItem('lista', JSON.stringify(lista.filter(g => g.id !== r)))
@@ -47,6 +57,16 @@ export const Inicio = () : JSX.Element => {
 
     function deleteAll () :void {
        setLista([])
+    }
+
+    function handleMusic () {
+        if(pausa){
+            sonido.play()
+            setPausa(false)
+        } else {
+            sonido.pause()
+            setPausa(true)
+        }
     }
 
     if(loading) {
@@ -58,7 +78,21 @@ export const Inicio = () : JSX.Element => {
             <div className={s.box}>
                 < InputModal setLista={setLista} lista={lista} />
                 <div className={s.title}>
-                    <h1>Regalos:</h1>
+                    <div>
+                        <h1>Regalos:</h1>
+
+                    </div>
+                    <div className={s.box_music}>
+                        <button
+                        onClick={handleMusic}
+                        className={pausa ? s.btn_music : s.btn_music_pausa}
+                        >
+                            {pausa
+                            ? <FontAwesomeIcon icon={faVolumeUp} />
+                            : <FontAwesomeIcon icon={faVolumeMute} />}
+                        </button>
+
+                    </div>
                 </div>
                 <div className={lista.length > 3 ? s.container_regalos : ""}>
                     {lista.length ? lista.map(r => (
@@ -96,10 +130,10 @@ export const Inicio = () : JSX.Element => {
                     <div className={s.containter_total}>
                         <p className={s.total}>Total: $ {new Intl.NumberFormat('es-AR').format(totalPrice)}</p>
                     </div>
+                    <PrevModal lista={lista}/>
                     <div className={s.trashAll_container}>
                         <button onClick={deleteAll} className={s.trashAll}>Borrar todo</button>
                     </div>
-                    <PrevModal lista={lista}/>
                 </>
                 : ""}
             </div>
