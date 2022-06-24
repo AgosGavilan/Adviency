@@ -45,7 +45,7 @@ export const Inicio = () : JSX.Element => {
     useEffect (() => {
         const url = 'https://andresguanov.github.io/assets/christmas.mp3'
         const musica = new Audio(url)
-        musica.volume = 0.5
+        musica.volume = 0.2
         musica.loop = true
         setSonido(musica)
     }, [])
