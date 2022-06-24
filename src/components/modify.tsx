@@ -1,6 +1,7 @@
 import React from "react";
-import { List } from "../interfaces/List"
+import { List, Validacion } from "../interfaces/List"
 import s from "../style/add.module.css"
+import { validate } from "./addGift"
 
 type Props = { 
     setLista: ([]) => void;
@@ -18,17 +19,29 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
         destinatario: edit.destinatario,
         precio: edit.precio
     })
+    const [errors, setErrors] = React.useState<Validacion>({})
 
     function handleChange(e: any) :void {
         e.preventDefault()
         setEditar((prev: List) => ({
             ...prev, 
             [e.target.name]: e.target.value
-        }))
+        }));
+        setErrors(
+            validate({
+                ...editar,
+                [e.target.name]: e.target.value
+            })
+        )
     }
 
     function handleEdit (e: any) {
         e.preventDefault()
+        let error = Object.keys(validate(editar))
+        if(error.length !== 0) {
+            alert("completa bien los campos")
+            return;
+        }
         let filtrados = lista.filter(el => el !== edit) //elimino el regalo que quiero editar
         filtrados.push(editar) //agrego el nuevo regalo, modificado
         lista = filtrados
@@ -50,6 +63,10 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 onChange={handleChange}
                 autoFocus
                 />
+                {errors.nombre && (
+                    <p className={s.danger}>{errors.nombre}</p>
+                )}
+
                 <label className={s.labels}>Destinatario<span className={s.asterisco}>*</span>: </label>
                 <input
                 className={s.input}
@@ -60,6 +77,10 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 onChange={handleChange}
                 autoFocus
                 />
+                {errors.destinatario && (
+                    <p className={s.danger}>{errors.destinatario}</p>
+                )}
+
                 <label className={s.labels}>Imagen: </label>
                 <input 
                 className={s.input_img}
@@ -70,7 +91,8 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 onChange={handleChange}
                 autoFocus
                 />
-                <label className={s.labels}>Cantidad<span className={s.asterisco}>*</span>: </label>
+
+                <label className={s.labels}>Cantidad: </label>
                 <input
                 className={s.cantidad}
                 type='number'
@@ -80,7 +102,8 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 onChange={handleChange}
                 autoFocus
                 />
-                <label className={s.labels}>Precio:  </label>
+
+                <label className={s.labels}>Precio<span className={s.asterisco}>*</span>:  </label>
                 <span className={s.container_precio}>
                     <span className={s.box_signo}><p className={s.signo}>$</p></span>
                     <input
@@ -93,6 +116,10 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                     autoFocus
                     />
                 </span>
+                {errors.precio && (
+                    <p className={s.danger}>{errors.precio}</p>
+                )}
+
                 <div className={s.btn_form}>
                     <button
                     type='button'

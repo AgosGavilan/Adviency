@@ -109,10 +109,19 @@
 }
 
 .nombre_regalo {
-    display: flex;
     margin-left: 8px;
     font-size: 19px;
     font-family: 'Tiro Tamil', serif;
+}
+
+.nombre_regalo_ov {
+    margin-left: 8px;
+    font-size: 19px;
+    font-family: 'Tiro Tamil', serif;
+    width: 150px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .span_buttons {

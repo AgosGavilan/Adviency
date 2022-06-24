@@ -98,17 +98,22 @@ export const Inicio = () : JSX.Element => {
                     {lista.length ? lista.map(r => (
                             <ul key={r.id}>
                                 <li key={r.id} className={s.li}>
-                                    <span className={s.img_name_q}>
-                                        <span style={span_circle}>
+                                    <div className={s.img_name_q}>
+                                        <div style={span_circle}>
                                             <img src={r.imagen ? r.imagen : img} alt='gift' width="40px" height="40px"/>
                                             <span className={s.rounded_circle}>{r.cantidad}</span>
-                                        </span>
-                                        <span>
-                                            <p className={s.nombre_regalo}>{r.nombre} - $ {new Intl.NumberFormat('es-AR').format(r.cantidad * r.precio)}</p>
+                                        </div>
+                                        <div>
+                                            <div style={n_p}>
+                                                {r.nombre.length > 15 
+                                                ? <p className={s.nombre_regalo_ov}>{r.nombre}</p>
+                                                : <p className={s.nombre_regalo}>{r.nombre}</p>}
+                                                <span> - ${new Intl.NumberFormat('es-AR').format(r.cantidad * r.precio)}</span>
+                                            </div>
                                             <p className={s.destinatario}>{r.destinatario}</p>
-                                        </span>
-                                    </span>
-                                    <span className={s.span_buttons}>
+                                        </div>
+                                    </div>
+                                    <div className={s.span_buttons}>
                                         <EditModal setLista={setLista} lista={lista} edit={r}/>
                                         <CopyModal setLista={setLista} lista={lista} copy={r}/>
                                         <Tooltip title="Eliminar">
@@ -119,7 +124,7 @@ export const Inicio = () : JSX.Element => {
                                                 <FontAwesomeIcon icon={faTrashCan} />
                                             </button>
                                         </Tooltip>
-                                    </span>
+                                    </div>
                                 </li>
                             </ul>
                     )): <div className={s.emptyList}>La lista esta vacía 😔 ¡Agrega algo!</div>}
@@ -144,6 +149,10 @@ export const Inicio = () : JSX.Element => {
 const span_circle = {
     display: "flex",
     marginRight: '5px'
+}
+
+const n_p = {
+    display: "flex"
 }
 
 

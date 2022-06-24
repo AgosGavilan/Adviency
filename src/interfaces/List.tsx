@@ -8,3 +8,9 @@ export interface List {
     destinatario: string;
     precio: number;
 }
+
+export interface Validacion {
+    nombre?: string;
+    destinatario?: string;
+    precio?: string;
+}

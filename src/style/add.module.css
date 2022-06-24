@@ -92,6 +92,13 @@
     justify-content: space-between;
 }
 
+.danger {
+    color: #d90429;
+    line-height: 0px;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
 .sorprendeme input {
     width: 14rem;
 }
