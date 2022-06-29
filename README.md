@@ -1,7 +1,7 @@
 # Lista de regalos de Navidad
 
-<p align="right">
-  <img height="200" src="./public/papa_noel.png" />
+<p align="center">
+  <img height="200" width="50%" src="https://cdn.wallpapersafari.com/36/48/Y7VbB9.jpeg" />
 </p>
 
 ## Objetivos del Proyecto
