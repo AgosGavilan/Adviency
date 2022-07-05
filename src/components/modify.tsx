@@ -7,10 +7,11 @@ type Props = {
     setLista: ([]) => void;
     lista: List[];
     handleClose: () => void;
-    edit: List
+    edit: List;
+    handleCloseMenu: () => void;
 }
 
-export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
+export const ModifyGift = ({setLista, lista, handleClose, edit, handleCloseMenu}: Props) => {
     const [editar, setEditar] = React.useState({
         id: edit.id,
         nombre: edit.nombre,
@@ -47,6 +48,7 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
         lista = filtrados
         setLista([...lista])
         handleClose()
+        handleCloseMenu()
     }
 
 
@@ -56,7 +58,6 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 <label className={s.labels}>Regalo<span className={s.asterisco}>*</span>: </label>
                 <input
                 className={s.input}
-                required
                 type='text'
                 name="nombre"
                 value={editar.nombre}
@@ -70,7 +71,6 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                 <label className={s.labels}>Destinatario<span className={s.asterisco}>*</span>: </label>
                 <input
                 className={s.input}
-                required
                 type='text'
                 name="destinatario"
                 value={editar.destinatario}
@@ -108,7 +108,6 @@ export const ModifyGift = ({setLista, lista, handleClose, edit}: Props) => {
                     <span className={s.box_signo}><p className={s.signo}>$</p></span>
                     <input
                     className={s.input}
-                    required
                     type='number'
                     name='precio'
                     value={editar.precio}

@@ -7,9 +7,10 @@ type Props = {
     lista: List[];
     handleClose: () => void;
     copy: List
+    handleCloseMenu: () => void;
 }
 
-export const Copy = ({setLista, lista, handleClose, copy}: Props) => {
+export const Copy = ({setLista, lista, handleClose, copy, handleCloseMenu}: Props) => {
     const [copiar, setCopiar] = React.useState({
         id: Math.random(),
         nombre: copy.nombre,
@@ -39,6 +40,7 @@ export const Copy = ({setLista, lista, handleClose, copy}: Props) => {
             precio: copy.precio
         })
         handleClose()
+        handleCloseMenu()
     }
 
 
@@ -49,7 +51,6 @@ export const Copy = ({setLista, lista, handleClose, copy}: Props) => {
                 <label className={s.labels}>Regalo<span className={s.asterisco}>*</span>: </label>
                 <input
                 className={s.input}
-                required
                 type='text'
                 name="nombre"
                 value={copiar.nombre}
@@ -59,7 +60,6 @@ export const Copy = ({setLista, lista, handleClose, copy}: Props) => {
                 <label className={s.labels}>Destinatario<span className={s.asterisco}>*</span>: </label>
                 <input
                 className={s.input}
-                required
                 type='text'
                 name="destinatario"
                 value={copiar.destinatario}
@@ -92,7 +92,6 @@ export const Copy = ({setLista, lista, handleClose, copy}: Props) => {
                     <span className={s.box_signo}><p className={s.signo}>$</p></span>
                     <input
                     className={s.input}
-                    required
                     type='number'
                     name='precio'
                     value={copiar.precio}

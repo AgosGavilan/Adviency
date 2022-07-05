@@ -12,19 +12,24 @@ import s from "../style/inicio.module.css"
 type Props = { //mediante la palabra clave type permite crear nuevos tipos y luego reutilizarlos
     setLista: ([]) => void;
     lista: List[]; //Y DE ESTA MANERA SE TYPEA UN ARRAY DE OBJETOS;
-    edit: List
+    edit: List;
+    handleCloseMenu: () => void;
 }
 
-export default function EditModal({setLista, lista, edit}: Props) {
+export default function EditModal({setLista, lista, edit, handleCloseMenu}: Props) {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  
+  const handleClose = () => {
+    setOpen(false);
+    handleCloseMenu()
+    }
 
   return (
-    <div style={box_edit}>
+    <div className={s.box_edit}>
       <Tooltip title="Editar">
-      <Button onClick={handleOpen}>
+      <Button onClick={handleOpen} className={s.arreglo}>
         <FontAwesomeIcon icon={faPenToSquare} className={s.trash}/>
       </Button>
       </Tooltip>
@@ -35,7 +40,7 @@ export default function EditModal({setLista, lista, edit}: Props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-            <ModifyGift setLista={setLista} lista={lista} handleClose={handleClose} edit={edit}/>
+            <ModifyGift setLista={setLista} lista={lista} handleClose={handleClose} edit={edit} handleCloseMenu={handleCloseMenu}/>
         </Box>
       </Modal>
     </div>
@@ -47,14 +52,10 @@ const style = {
     top: '45%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: '21rem',
     bgcolor: 'white',
     border: 'none',
     boxShadow: 24,
     p: 4,
     borderRadius: 2.5
 };
-
-const box_edit = {
-  width: 50
-}

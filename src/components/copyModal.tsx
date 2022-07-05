@@ -14,15 +14,19 @@ type Props = {
   setLista: ([]) => void;
   lista: List[]; //Y DE ESTA MANERA SE TYPEA UN ARRAY DE OBJETOS;
   copy: List;
+  handleCloseMenu: () => void
 };
 
-export const CopyModal = ({ setLista, lista, copy }: Props) => {
+export const CopyModal = ({ setLista, lista, copy, handleCloseMenu }: Props) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    handleCloseMenu()
+  }
 
   return (
-    <>
+    <div className={s.arreglo}>
       <Tooltip title="Copiar Regalo">
         <Button onClick={handleOpen}>
           <FontAwesomeIcon icon={faCopy} className={s.trash}/>
@@ -35,10 +39,10 @@ export const CopyModal = ({ setLista, lista, copy }: Props) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-            <Copy setLista={setLista} lista={lista} handleClose={handleClose} copy={copy}/>
+            <Copy setLista={setLista} lista={lista} handleClose={handleClose} copy={copy} handleCloseMenu={handleCloseMenu}/>
         </Box>
       </Modal>
-    </>
+    </div>
   );
 };
 
@@ -47,7 +51,7 @@ const style = {
   top: "45%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: '21rem',
   bgcolor: "white",
   border: "none",
   boxShadow: 24,

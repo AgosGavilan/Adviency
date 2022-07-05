@@ -11,6 +11,7 @@ import { Loading } from "./loading";
 import Tooltip from '@mui/material/Tooltip';
 import { CopyModal } from "./copyModal";
 import { PrevModal } from "./prevModal";
+import BtnResponsive from "./btnResponsive";
 
 export const Inicio = () : JSX.Element => {
     const [lista, setLista] = useState<List[]>([]);
@@ -74,7 +75,6 @@ export const Inicio = () : JSX.Element => {
     }
 
     return(
-        <div className={s.main}>
             <div className={s.box}>
                 < InputModal setLista={setLista} lista={lista} />
                 <div className={s.title}>
@@ -100,11 +100,11 @@ export const Inicio = () : JSX.Element => {
                                 <li key={r.id} className={s.li}>
                                     <div className={s.img_name_q}>
                                         <div style={span_circle}>
-                                            <img src={r.imagen ? r.imagen : img} alt='gift' width="40px" height="40px"/>
+                                            <img src={r.imagen ? r.imagen : img} alt='gift' className={s.img}/>
                                             <span className={s.rounded_circle}>{r.cantidad}</span>
                                         </div>
                                         <div>
-                                            <div style={n_p}>
+                                            <div className={s.nom_pre}>
                                                 {r.nombre.length > 15 
                                                 ? <p className={s.nombre_regalo_ov}>{r.nombre}</p>
                                                 : <p className={s.nombre_regalo}>{r.nombre}</p>}
@@ -114,8 +114,12 @@ export const Inicio = () : JSX.Element => {
                                         </div>
                                     </div>
                                     <div className={s.span_buttons}>
-                                        <EditModal setLista={setLista} lista={lista} edit={r}/>
-                                        <CopyModal setLista={setLista} lista={lista} copy={r}/>
+                                        <EditModal setLista={setLista} lista={lista} edit={r} handleCloseMenu={function (): void {
+                                        throw new Error("Function not implemented.");
+                                    } }/>
+                                        <CopyModal setLista={setLista} lista={lista} copy={r} handleCloseMenu={function (): void {
+                                        throw new Error("Function not implemented.");
+                                    } }/>
                                         <Tooltip title="Eliminar">
                                             <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar
                                             onClick={()=> handleDelete(r.id)} //asi que por parametro le paso a la funcion el elemento (r)
@@ -124,6 +128,9 @@ export const Inicio = () : JSX.Element => {
                                                 <FontAwesomeIcon icon={faTrashCan} />
                                             </button>
                                         </Tooltip>
+                                    </div>
+                                    <div className={s.responsive_btn}>
+                                        <BtnResponsive setLista={setLista} lista={lista} edit={r} copy={r}/>
                                     </div>
                                 </li>
                             </ul>
@@ -142,17 +149,12 @@ export const Inicio = () : JSX.Element => {
                 </>
                 : ""}
             </div>
-        </div>
     )
 }
 
 const span_circle = {
     display: "flex",
     marginRight: '5px'
-}
-
-const n_p = {
-    display: "flex"
 }
 
 
