@@ -44,7 +44,6 @@ export const Inicio = () : JSX.Element => {
     }, [lista, totalPrice, setTotalPrice])
 
     useEffect (() => {
-        //const url = "../assets/hs.mp3"
         const musica = new Audio(require("../assets/JingleBellRocks.mp3"))
         musica.loop = true
         setSonido(musica)
