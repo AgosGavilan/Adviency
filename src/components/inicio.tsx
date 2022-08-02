@@ -17,7 +17,7 @@ export const Inicio = () : JSX.Element => {
     const [lista, setLista] = useState<List[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [sonido, setSonido] = useState<any>('');
+    const [sonido, setSonido] = useState<HTMLAudioElement>();
     const [pausa, setPausa] = useState<boolean>(true)
 
     useEffect(() => {
@@ -44,9 +44,8 @@ export const Inicio = () : JSX.Element => {
     }, [lista, totalPrice, setTotalPrice])
 
     useEffect (() => {
-        const url = 'https://andresguanov.github.io/assets/christmas.mp3'
-        const musica = new Audio(url)
-        musica.volume = 0.2
+        //const url = "../assets/hs.mp3"
+        const musica = new Audio(require("../assets/JingleBellRocks.mp3"))
         musica.loop = true
         setSonido(musica)
     }, [])
@@ -62,10 +61,10 @@ export const Inicio = () : JSX.Element => {
 
     function handleMusic () {
         if(pausa){
-            sonido.play()
+            sonido!.play()
             setPausa(false)
         } else {
-            sonido.pause()
+            sonido!.pause()
             setPausa(true)
         }
     }
