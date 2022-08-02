@@ -134,7 +134,7 @@ export const AddGift = ({setLista, lista, handleClose}: Props) :JSX.Element => {
                 <input
                 className={s.cantidad}
                 type='number'
-                min={1}
+                min={0}
                 value={regalo.cantidad}
                 name='cantidad'
                 onChange={handleChange}

@@ -9,13 +9,13 @@
 }
 
 .box {
-    background-color: white;
+    background-color: ghostwhite;
     font-size: 30px;
     padding: 20px 35px;
-    margin-bottom: 70px;
-    margin-left: 150px;
+    /* margin-bottom: 70px;
+    margin-left: 150px; */
     border-radius: 5px;
-    width: 85%;
+    width: 100%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
@@ -135,6 +135,7 @@
 .span_buttons {
     display: flex;
     align-items: center;
+    margin-left: 1rem;
 }
 
 .edit {
@@ -233,6 +234,7 @@
     .box {
         margin: auto;
         width: 100%;
+        min-width: 24rem;
     }
     .title {
         font-size: 1.5rem;
@@ -249,7 +251,7 @@
         flex-direction: column;
     }
     .nom_pre span {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
     }
     .nombre_regalo {
         font-size: 0.9rem;
@@ -258,10 +260,11 @@
         font-size: 0.9rem;
     }
     .destinatario {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
     .span_buttons {
         display: none;
+        margin-left: 0;
     }
     .responsive_btn {
         display: flex;
