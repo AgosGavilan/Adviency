@@ -140,7 +140,7 @@
     height: 2.1875rem;
     font-size: 15px;
     background-color: lightgrey;
-    border-radius: 3px
+    border-radius: 3px 0px 0px 3px
 }
 
 .signo {

@@ -140,7 +140,7 @@ export const AddGift = ({setLista, lista, handleClose}: Props) :JSX.Element => {
                 onChange={handleChange}
                 />
 
-                <label className={s.labels}>Precio<span className={s.asterisco}>*</span>: </label>
+                <label className={s.labels}>Precio Unitario<span className={s.asterisco}>*</span>: </label>
                 <span className={s.container_precio}>
                     <span className={s.box_signo}><p className={s.signo}>$</p></span>
                     <input
