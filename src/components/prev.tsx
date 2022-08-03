@@ -1,8 +1,7 @@
 import React from "react";
 import { List } from '../interfaces/List'
 import img from '../assets/png-transparent-christmas-gift-christmas-gift-gift-miscellaneous-ribbon-desktop-wallpaper-removebg-preview.png'
-import s from '../style/inicio.module.css';
-import a from '../style/add.module.css'
+import s from '../style/prev.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPrint} from "@fortawesome/free-solid-svg-icons"
 
@@ -27,23 +26,23 @@ export const Previsualizacion = ({lista, handleClose}:PropsPrev) => {
                     <ul key={el.id}>
                         <li key={el.id} className={s.li}>
                             <span className={s.img_name_q}>
-                                <span>
-                                    <img src={el.imagen ? el.imagen : img} alt='gift' width="40px" height="40px"/>
+                                <span className={s.box_img}>
+                                    <img src={el.imagen ? el.imagen : img} alt='gift' width="35px" height="35px"/>
                                 </span>
                                 <span>
-                                    <p className={s.nombre_regalo}>{`${el.nombre} (${el.cantidad})`}</p>
-                                    <p className={s.destinatario}>{el.destinatario}</p>
+                                    <p className={s.nombre_regalo}>{`${el.nombre.charAt(0).toUpperCase()}${el.nombre.slice(1)} (${el.cantidad})`}</p>
+                                    <p className={s.destinatario}>{el.destinatario.charAt(0).toUpperCase()}{el.destinatario.slice(1)}</p>
                                 </span>
                             </span>
                         </li>
                     </ul>
                 )) : ""}
             </div>
-            <div className={a.btn_form}>
+            <div className={s.btn_form}>
                 <button
                 type='button'
                 autoFocus
-                className={a.btn_close}
+                className={s.btn_close}
                 onClick={handleClose}
                 >
                 Cerrar
@@ -51,7 +50,7 @@ export const Previsualizacion = ({lista, handleClose}:PropsPrev) => {
                 <button
                 type="button"
                 value="imprimir"
-                className={a.btn}
+                className={s.btn}
                 onClick={handlePrint}
                 >
                     <FontAwesomeIcon icon={faPrint}/>

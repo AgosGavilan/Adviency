@@ -38,6 +38,28 @@
     overflow-y: scroll;
 }
 
+.container_regalos::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.container_regalos::-webkit-scrollbar:vertical {
+    width:8px;
+}
+
+.container_regalos::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.container_regalos::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.container_regalos::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+
 .title {
     display: flex;
     flex-direction: row;
@@ -107,6 +129,10 @@
 
 .nom_pre {
     display: flex;
+}
+
+.nom_pre span {
+    margin-left: 8px;
 }
 
 .nombre_regalo {
@@ -237,30 +263,30 @@
         min-width: 24rem;
     }
     .title {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     .img {
-        width: 1.7rem;
-        height: 1.7rem;
+        width: 1.8rem;
+        height: 1.8rem;
     }
     .rounded_circle {
-        width: 1rem;
-        height: 1rem;
+        width: 1.2rem;
+        height: 1.2rem;
     }
     .nom_pre {
         flex-direction: column;
     }
     .nom_pre span {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
     .nombre_regalo {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     .nombre_regalo_ov {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     .destinatario {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
     .span_buttons {
         display: none;

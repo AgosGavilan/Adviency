@@ -104,19 +104,19 @@ export const Inicio = () : JSX.Element => {
                                         <div>
                                             <div className={s.nom_pre}>
                                                 {r.nombre.length > 15 
-                                                ? <p className={s.nombre_regalo_ov}>{r.nombre}</p>
-                                                : <p className={s.nombre_regalo}>{r.nombre}</p>}
-                                                <span> - ${new Intl.NumberFormat('es-AR').format(r.cantidad * r.precio)}</span>
+                                                ? <p className={s.nombre_regalo_ov}>${r.nombre.charAt(0).toUpperCase()}${r.nombre.slice(1)}</p>
+                                                : <p className={s.nombre_regalo}>{r.nombre.charAt(0).toUpperCase()}{r.nombre.slice(1)}</p>}
+                                                <span> ${new Intl.NumberFormat('es-AR').format(r.cantidad * r.precio)}</span>
                                             </div>
-                                            <p className={s.destinatario}>{r.destinatario}</p>
+                                            <p className={s.destinatario}>{r.destinatario.charAt(0).toUpperCase()}{r.destinatario.slice(1)}</p>
                                         </div>
                                     </div>
                                     <div className={s.span_buttons}>
                                         <EditModal setLista={setLista} lista={lista} edit={r} handleCloseMenu={function (): void {
-                                        throw new Error("Function not implemented.");
+                                        console.log("todo ok");
                                     } }/>
                                         <CopyModal setLista={setLista} lista={lista} copy={r} handleCloseMenu={function (): void {
-                                        throw new Error("Function not implemented.");
+                                        console.log("todo ok");
                                     } }/>
                                         <Tooltip title="Eliminar">
                                             <button //al boton de eliminar le tengo que decir QUE ELEMENTO de mi array de regalos tienen que eliminar

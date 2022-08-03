@@ -44,10 +44,10 @@ const style = {
     width: 320,
     bgcolor: "ghostwhite",
     border: "none",
-    boxShadow: 24,
+    boxShadow: 12,
     p: 4,
     borderRadius: 1.25,
-    padding: 5
+    padding: 4
   };
 
   const text = {
